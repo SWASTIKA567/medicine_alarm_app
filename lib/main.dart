@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'screens/home_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'models/medicine_model.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Medicine Reminder',
       theme: ThemeData(primaryColor: Colors.teal),
