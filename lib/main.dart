@@ -14,15 +14,6 @@ void main() async {
   await Hive.openBox<Medicine>('medicines');
 
   await NotificationService.init();
-  await NotificationService.showTestNotification();
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
-
-  await flutterLocalNotificationsPlugin
-      .resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin
-      >()
-      ?.requestNotificationsPermission();
 
   runApp(const MyApp());
 }

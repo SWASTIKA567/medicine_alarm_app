@@ -13,9 +13,17 @@ class NotificationService {
     const initSettings = InitializationSettings(android: androidSettings);
 
     await _notifications.initialize(initSettings);
+    final androidPlugin = _notifications
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
+
+    if (androidPlugin != null) {
+      await androidPlugin.requestNotificationsPermission();
+    }
 
     tz.initializeTimeZones();
-    tz.setLocalLocation(tz.getLocation('Asia/Kolkata'));
+    tz.setLocalLocation(tz.local);
   }
 
   static Future<void> scheduleNotification({
@@ -38,22 +46,6 @@ class NotificationService {
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-    );
-  }
-
-  static Future<void> showTestNotification() async {
-    await _notifications.show(
-      999,
-      "Test Notification",
-      "If you see this, notifications work",
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'test_channel',
-          'Test',
-          importance: Importance.max,
-          priority: Priority.high,
-        ),
-      ),
     );
   }
 }
