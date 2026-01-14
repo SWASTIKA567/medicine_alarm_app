@@ -1,16 +1,29 @@
-# medicine_checker
+ Medicine Reminder App
 
-A new Flutter project.
+A Flutter app to schedule and receive medicine reminders.
 
-## Getting Started
+- Features
 
-This project is a starting point for a Flutter application.
+Add medicines with name, dose, and time
 
-A few resources to get you started if this is your first Flutter project:
+Medicine list sorted by time
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Local storage using Hive
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+State management using GetX
+
+Local notifications for reminders (works in background)
+
+Teal theme with orange buttons
+
+No backend (fully offline)
+
+- Tech Stack
+
+Flutter
+
+GetX
+
+Hive
+
+flutter_local_notifications
