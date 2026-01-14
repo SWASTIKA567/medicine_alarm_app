@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'models/medicine_model.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(MedicineAdapter());
+  await Hive.openBox<Medicine>('medicines');
+
   runApp(const MyApp());
 }
 
