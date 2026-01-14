@@ -15,6 +15,7 @@ class NotificationService {
     await _notifications.initialize(initSettings);
 
     tz.initializeTimeZones();
+    tz.setLocalLocation(tz.getLocation('Asia/Kolkata'));
   }
 
   static Future<void> scheduleNotification({
@@ -37,7 +38,22 @@ class NotificationService {
         ),
       ),
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      matchDateTimeComponents: DateTimeComponents.time,
+    );
+  }
+
+  static Future<void> showTestNotification() async {
+    await _notifications.show(
+      999,
+      "Test Notification",
+      "If you see this, notifications work",
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'test_channel',
+          'Test',
+          importance: Importance.max,
+          priority: Priority.high,
+        ),
+      ),
     );
   }
 }

@@ -49,7 +49,7 @@ class MedicineController extends GetxController {
       id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
       title: "Medicine Reminder",
       body: "${medicine.name} - ${medicine.dose}",
-      scheduledTime: scheduled,
+      scheduledTime: DateTime.now().add(const Duration(seconds: 30)),
     );
   }
 

@@ -5,6 +5,7 @@ import 'models/medicine_model.dart';
 import 'package:get/get.dart';
 
 import 'services/notification_service.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,15 @@ void main() async {
   await Hive.openBox<Medicine>('medicines');
 
   await NotificationService.init();
+  await NotificationService.showTestNotification();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin
+      >()
+      ?.requestNotificationsPermission();
 
   runApp(const MyApp());
 }
