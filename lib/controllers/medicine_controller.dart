@@ -4,13 +4,14 @@ import '../models/medicine_model.dart';
 import '../services/notification_service.dart';
 
 class MedicineController extends GetxController {
-  final Box<Medicine> _box = Hive.box<Medicine>('medicines');
+  late Box<Medicine> _box;
 
   var medicines = <Medicine>[].obs;
 
   @override
   void onInit() {
     super.onInit();
+    _box = Hive.box<Medicine>('medicines');
     loadMedicines();
   }
 
@@ -49,7 +50,7 @@ class MedicineController extends GetxController {
       id: DateTime.now().millisecondsSinceEpoch ~/ 1000,
       title: "Medicine Reminder",
       body: "${medicine.name} - ${medicine.dose}",
-      scheduledTime: DateTime.now().add(const Duration(seconds: 30)),
+      scheduledTime: scheduled,
     );
   }
 

@@ -12,8 +12,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final box = Hive.box<Medicine>('medicines');
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Medicine Reminder"),

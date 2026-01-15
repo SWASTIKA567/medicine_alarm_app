@@ -13,8 +13,6 @@ void main() async {
   Hive.registerAdapter(MedicineAdapter());
   await Hive.openBox<Medicine>('medicines');
 
-  await NotificationService.init();
-
   runApp(const MyApp());
 }
 
